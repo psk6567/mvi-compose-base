@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVI-Compose</string>
+    <string name="get_data">Get Data</string>
+    <string name="sideeffect_test">SideEffect Test</string>
+</resources>
