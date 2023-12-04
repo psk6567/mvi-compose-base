@@ -4,12 +4,11 @@ import android.content.Context
 import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.flow.collect
 import kr.co.psk.common.model.onFailed
 import kr.co.psk.common.model.onLoading
 import kr.co.psk.common.model.onSuccess
 import kr.co.psk.domain.ui_model.UiStatus
-import kr.co.psk.domain.usecase.GetRetrofit2TestUseCase
+import kr.co.psk.domain.usecase.retrofit2.GetRetrofit2TestUseCase
 import kr.co.psk.mvi_compose.base.BaseViewModel
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.syntax.simple.intent

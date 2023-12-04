@@ -48,12 +48,16 @@ suspend fun <T> ResponseState<T>.onSuccess(
 suspend fun <T> ResponseState<T>.onFailed(
     onFailure: suspend (Throwable) -> Unit,
 ) : ResponseState<T>  {
-    return withContext(Dispatchers.Main) {
-        if (this@onFailed is ResponseState.Failure) {
+    if (this@onFailed is ResponseState.Failure) {
             onFailure(this@onFailed.error)
         }
-        this@onFailed
-    }
+    return this@onFailed
+//    return withContext(Dispatchers.Main) {
+//        if (this@onFailed is ResponseState.Failure) {
+//            onFailure(this@onFailed.error)
+//        }
+//        this@onFailed
+//    }
 }
 
 fun <T> ResponseState<T>.getData(): T? = if (this is ResponseState.Success<T>) {

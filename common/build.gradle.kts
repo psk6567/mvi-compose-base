@@ -7,6 +7,7 @@ android {
     namespace = "kr.co.psk.common"
     defaultConfig {
         buildConfigField("String", "TEST_WEB_URL", "\"https://google.com\"")
+        buildConfigField("String", "SAMPLE_TABLE_NAME", "\"SampleTable\"")
     }
     buildTypes {
         debug{
