@@ -1,7 +1,6 @@
 package kr.co.psk.mvi_compose.ui.example.retrofit2
 
 import android.widget.Toast
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +9,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -55,7 +53,7 @@ internal fun ExampleRetrofit2Screen(viewModel: ExampleRetrofit2ViewModel) {
                 viewModel.testSideEffect()
             }
         ) {
-            Text(text = stringResource(id = R.string.sideeffect_test))
+            Text(text = stringResource(id = R.string.sideffect_test))
         }
         when (state.status) {
             UiStatus.Loading -> {

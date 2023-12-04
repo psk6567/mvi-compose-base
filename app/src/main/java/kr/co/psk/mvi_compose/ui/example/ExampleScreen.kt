@@ -27,6 +27,7 @@ import kr.co.psk.mvi_compose.ui.example.datastore.ExampleDataStore2Screen
 import kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2Screen
 import kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2ViewModel
 import kr.co.psk.mvi_compose.ui.example.room.ExampleRoomScreen
+import kr.co.psk.mvi_compose.ui.example.room.ExampleRoomViewModel
 import kr.co.psk.mvi_compose.ui.example.socket.ExampleSocketScreen
 
 enum class ExampleTab() {
@@ -83,11 +84,7 @@ private fun NavigationGraph(navController: NavHostController) {
         startDestination = ExampleTab.RETROFIT2.name,
     ) {
         addRetrofitScreen()
-        composable(
-            route = ExampleTab.ROOM.name
-        ) {
-            ExampleRoomScreen()
-        }
+        addRoomScreen()
         composable(
             route = ExampleTab.DATASTORE.name
         ) {
@@ -141,5 +138,14 @@ private fun NavGraphBuilder.addRetrofitScreen(){
     ) {
         val viewModel : ExampleRetrofit2ViewModel = hiltViewModel()
         ExampleRetrofit2Screen(viewModel)
+    }
+}
+
+private fun NavGraphBuilder.addRoomScreen(){
+    composable(
+        route = ExampleTab.ROOM.name
+    ) {
+        val viewModel : ExampleRoomViewModel = hiltViewModel()
+        ExampleRoomScreen(viewModel)
     }
 }

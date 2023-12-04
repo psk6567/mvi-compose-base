@@ -1,4 +1,4 @@
-package kr.co.psk.domain.usecase
+package kr.co.psk.domain.usecase.retrofit2
 
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
