@@ -95,8 +95,9 @@ object Libraries {
 
     object DataStore {
         const val datastore = "androidx.datastore:datastore:${Version.DataStore}"
-        const val datastorePreferences = "androidx.datastore:datastore-preferences-core:${Version.DataStore}"
         const val datastoreCore = "androidx.datastore:datastore-core:${Version.DataStore}"
+        const val datastorePreferences = "androidx.datastore:datastore-preferences:${Version.DataStore}"
+        const val datastorePreferencesCore = "androidx.datastore:datastore-preferences-core:${Version.DataStore}"
     }
 
     object Test {

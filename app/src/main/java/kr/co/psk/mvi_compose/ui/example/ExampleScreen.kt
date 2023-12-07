@@ -1,6 +1,5 @@
 package kr.co.psk.mvi_compose.ui.example
 
-import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -14,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
@@ -23,7 +21,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import kr.co.psk.mvi_compose.ui.example.datastore.ExampleDataStore2Screen
+import kr.co.psk.mvi_compose.ui.example.datastore.ExampleDataStoreScreen
+import kr.co.psk.mvi_compose.ui.example.datastore.ExampleDataStoreViewModel
 import kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2Screen
 import kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2ViewModel
 import kr.co.psk.mvi_compose.ui.example.room.ExampleRoomScreen
@@ -85,11 +84,7 @@ private fun NavigationGraph(navController: NavHostController) {
     ) {
         addRetrofitScreen()
         addRoomScreen()
-        composable(
-            route = ExampleTab.DATASTORE.name
-        ) {
-            ExampleDataStore2Screen()
-        }
+        addDataStoreScreen()
         composable(
             route = ExampleTab.SOCKET.name
         ) {
@@ -147,5 +142,14 @@ private fun NavGraphBuilder.addRoomScreen(){
     ) {
         val viewModel : ExampleRoomViewModel = hiltViewModel()
         ExampleRoomScreen(viewModel)
+    }
+}
+
+private fun NavGraphBuilder.addDataStoreScreen(){
+    composable(
+        route = ExampleTab.DATASTORE.name
+    ) {
+        val viewModel : ExampleDataStoreViewModel = hiltViewModel()
+        ExampleDataStoreScreen(viewModel)
     }
 }
