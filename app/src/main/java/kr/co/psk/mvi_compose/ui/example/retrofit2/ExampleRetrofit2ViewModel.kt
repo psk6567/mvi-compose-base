@@ -31,7 +31,6 @@ class ExampleRetrofit2ViewModel @Inject constructor(
             intent {
                 getRetrofit2TestUseCase().collect { response ->
                     response.onSuccess { data ->
-                        Log.e("Test data",data.toString())
                         reduce {
                             state.copy(
                                 status = UiStatus.IDLE,

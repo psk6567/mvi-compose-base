@@ -94,6 +94,8 @@ fun DependencyHandler.datastoreDependency() {
     implementation(Libraries.DataStore.datastoreCore)
     implementation(Libraries.DataStore.datastore)
     implementation(Libraries.DataStore.datastorePreferences)
+    implementation(Libraries.DataStore.datastorePreferencesCore)
+
 }
 
 fun DependencyHandler.fireBaseDependencies() {

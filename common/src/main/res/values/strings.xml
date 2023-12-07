@@ -5,4 +5,6 @@
     <string name="insert">Insert</string>
     <string name="select">Select</string>
     <string name="delete">Delete</string>
+    <string name="preferences">Preferences</string>
+    <string name="update">Update</string>
 </resources>
