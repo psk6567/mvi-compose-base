@@ -31,7 +31,6 @@ class ExampleRoomViewModel @Inject constructor(
 
     override val container = container<ExampleRoomState, ExampleRoomSideEffect>(
         ExampleRoomState()
-
     )
 
     init {

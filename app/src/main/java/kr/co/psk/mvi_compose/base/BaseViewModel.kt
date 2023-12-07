@@ -23,4 +23,12 @@ abstract class BaseViewModel(
             inScopeAction()
         }
     }
+
+    open fun onResume() {
+
+    }
+
+    open fun onPause() {
+
+    }
 }

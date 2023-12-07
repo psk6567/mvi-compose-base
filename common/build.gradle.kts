@@ -8,6 +8,8 @@ android {
     defaultConfig {
         buildConfigField("String", "TEST_WEB_URL", "\"https://google.com\"")
         buildConfigField("String", "SAMPLE_TABLE_NAME", "\"SampleTable\"")
+        buildConfigField("String", "SECRET_KEY", "\"psk_test__16byte\"")
+
     }
     buildTypes {
         debug{

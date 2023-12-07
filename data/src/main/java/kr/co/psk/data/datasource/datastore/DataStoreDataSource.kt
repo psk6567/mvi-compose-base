@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.map
+import kr.co.psk.common.AES256Cipher
 
 class DataStoreDataSource(private val context : Context) {
 
@@ -16,11 +17,11 @@ class DataStoreDataSource(private val context : Context) {
 
     suspend fun setTestPreferences(testString : String) {
         context.dataStore.edit {dataStore ->
-            dataStore[KET_TEST_STRING] = testString
+            dataStore[KET_TEST_STRING] = AES256Cipher.encode(testString)
         }
     }
 
     suspend fun getTestPreferences() = context.dataStore.data.map {
-        it[KET_TEST_STRING] ?: ""
+        AES256Cipher.decode(it[KET_TEST_STRING] ?: "")
     }
 }
