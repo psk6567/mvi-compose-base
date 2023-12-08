@@ -7,4 +7,10 @@
     <string name="delete">Delete</string>
     <string name="preferences">Preferences</string>
     <string name="update">Update</string>
+    <string name="server_stop">Server is Stop</string>
+    <string name="server_running">Server is Running</string>
+    <string name="send">Send</string>
+    <string name="app_finish_double_press">한 번 더 누르시면 앱이 종료됩니다.</string>
+    <string name="connected">Connected</string>
+    <string name="diconnected">Disconnected</string>
 </resources>
