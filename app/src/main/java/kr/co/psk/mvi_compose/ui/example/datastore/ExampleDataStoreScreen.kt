@@ -1,6 +1,5 @@
 package kr.co.psk.mvi_compose.ui.example.datastore
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button

@@ -9,7 +9,7 @@ android {
         buildConfigField("String", "TEST_WEB_URL", "\"https://google.com\"")
         buildConfigField("String", "SAMPLE_TABLE_NAME", "\"SampleTable\"")
         buildConfigField("String", "SECRET_KEY", "\"psk_test__16byte\"")
-
+        buildConfigField("int", "SOCKET_PORT", "4989")
     }
     buildTypes {
         debug{

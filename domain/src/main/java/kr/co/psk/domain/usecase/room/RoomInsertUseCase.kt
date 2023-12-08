@@ -1,15 +1,10 @@
 package kr.co.psk.domain.usecase.room
 
-import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kr.co.psk.common.model.ResponseState
 import kr.co.psk.data.model.entity.RoomTestEntity
-import kr.co.psk.data.repository.Retrofit2Repository
 import kr.co.psk.data.repository.RoomRepository
-import kr.co.psk.domain.ui_model.Retrofit2TestUiModel
-import kr.co.psk.domain.ui_model.RoomTestSampleListUiModel
 import javax.inject.Inject
 
 class RoomInsertUseCase @Inject constructor(

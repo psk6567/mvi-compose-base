@@ -1,9 +1,10 @@
 package kr.co.psk.mvi_compose.ui.example.socket
 
-import kr.co.psk.domain.ui_model.RoomTestSampleListUiModel
-import kr.co.psk.domain.ui_model.RoomTestUiModel
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 import kr.co.psk.domain.ui_model.UiStatus
 
 data class ExampleSocketState(
-    val status : UiStatus = UiStatus.IDLE
+    val status : UiStatus = UiStatus.IDLE,
+    var isConnectedSocket : Boolean = false,
 )
