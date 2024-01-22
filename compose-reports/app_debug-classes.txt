@@ -1,0 +1,6 @@
+unstable class ExampleRetrofit2ViewModel {
+  runtime val getRetrofit2TestUseCase: GetRetrofit2TestUseCase
+  unstable val container: Container<ExampleRetrofit2State, ExampleRetrofit2SideEffect>
+  unstable var _recompositionTestList: MutableStateFlow<PersistentList<Retrofit2TestUiModel>>
+  <runtime stability> = Unstable
+}

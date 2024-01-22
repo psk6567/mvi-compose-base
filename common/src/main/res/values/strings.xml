@@ -2,6 +2,7 @@
     <string name="app_name">MVI-Compose</string>
     <string name="get_data">Get Data</string>
     <string name="sideffect_test">SideEffect Test</string>
+    <string name="recomposition_test">Recomposition Test</string>
     <string name="insert">Insert</string>
     <string name="select">Select</string>
     <string name="delete">Delete</string>

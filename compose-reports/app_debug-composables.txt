@@ -1,0 +1,17 @@
+restartable scheme("[androidx.compose.ui.UiComposable]") fun ExampleRetrofit2Screen(
+  unstable viewModel: ExampleRetrofit2ViewModel
+)
+restartable skippable scheme("[androidx.compose.ui.UiComposable]") fun ButtonSection(
+  stable onClickGetData: Function0<Unit>
+  stable onClickSideEffect: Function0<Unit>
+  stable onClickTestRecomposition: Function0<Unit>
+)
+restartable scheme("[androidx.compose.ui.UiComposable]") fun ExampleRetrofit2ListBody(
+  unstable viewModel: ExampleRetrofit2ViewModel
+)
+restartable skippable scheme("[androidx.compose.ui.UiComposable]") fun ExampleRetrofit2ListBodyMVI(
+  stable list: ImmutableList<Retrofit2TestUiModel>
+)
+restartable skippable scheme("[androidx.compose.ui.UiComposable]") fun ExampleRetrofit2ListItem(
+  stable item: Retrofit2TestUiModel
+)

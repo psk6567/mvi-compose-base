@@ -4,7 +4,6 @@ plugins {
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
-
 android {
     namespace = "kr.co.psk.mvi_compose"
     compileSdk = AppConfig.compileSdk
@@ -45,7 +44,10 @@ android {
         jvmTarget = Version.JAVA_VERSION.toString()
         allWarningsAsErrors = false
         freeCompilerArgs += "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
-
+        freeCompilerArgs += listOf("-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=${rootProject.file(".").absolutePath}/compose-metrics")
+        freeCompilerArgs += listOf("-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=${rootProject.file(".").absolutePath}/compose-reports")
     }
     buildFeatures {
         buildConfig = true

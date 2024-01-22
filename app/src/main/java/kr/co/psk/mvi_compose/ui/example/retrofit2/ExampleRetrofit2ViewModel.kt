@@ -4,9 +4,16 @@ import android.content.Context
 import android.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kr.co.psk.common.model.onFailed
 import kr.co.psk.common.model.onLoading
 import kr.co.psk.common.model.onSuccess
+import kr.co.psk.domain.ui_model.Retrofit2TestUiModel
 import kr.co.psk.domain.ui_model.UiStatus
 import kr.co.psk.domain.usecase.retrofit2.GetRetrofit2TestUseCase
 import kr.co.psk.mvi_compose.base.BaseViewModel
@@ -26,11 +33,15 @@ class ExampleRetrofit2ViewModel @Inject constructor(
         ExampleRetrofit2State()
     )
 
+    private var _recompositionTestList = MutableStateFlow(persistentListOf<Retrofit2TestUiModel>())
+    val recompositionTestList get() = _recompositionTestList.asStateFlow()
+
     fun getExampleData() {
         ioScope {
             intent {
                 getRetrofit2TestUseCase().collect { response ->
                     response.onSuccess { data ->
+                        _recompositionTestList.update { data.toPersistentList() }
                         reduce {
                             state.copy(
                                 status = UiStatus.IDLE,
@@ -55,6 +66,22 @@ class ExampleRetrofit2ViewModel @Inject constructor(
     fun testSideEffect() {
         intent {
             postSideEffect(ExampleRetrofit2SideEffect.ErrorToast("Side Effect!!!"))
+        }
+    }
+
+    fun testRecomposition() {
+/*        intent {
+            reduce {
+                val origin = state.list.toMutableList()
+                origin[1]  = origin[1].copy(body = origin[1].body+"~")
+                state.copy(
+                    list = origin.toImmutableList()
+                )
+            }
+        }*/
+        _recompositionTestList.update { origin ->
+            Log.e("Test origin01",origin[1].index)
+            origin.set(1,origin[1].copy(body = origin[1].body+"~"))
         }
     }
 }

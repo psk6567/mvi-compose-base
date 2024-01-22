@@ -1,0 +1,6 @@
+package,name,composable,skippable,restartable,readonly,inline,isLambda,hasDefaults,defaultsGroup,groups,calls,
+kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2Screen,ExampleRetrofit2Screen,1,0,1,0,0,0,0,0,1,4,
+kr.co.psk.mvi_compose.ui.example.retrofit2.ButtonSection,ButtonSection,1,1,1,0,0,0,0,0,1,3,
+kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2ListBody,ExampleRetrofit2ListBody,1,0,1,0,0,0,0,0,1,3,
+kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2ListBodyMVI,ExampleRetrofit2ListBodyMVI,1,1,1,0,0,0,0,0,1,2,
+kr.co.psk.mvi_compose.ui.example.retrofit2.ExampleRetrofit2ListItem,ExampleRetrofit2ListItem,1,1,1,0,0,0,0,0,1,2,
