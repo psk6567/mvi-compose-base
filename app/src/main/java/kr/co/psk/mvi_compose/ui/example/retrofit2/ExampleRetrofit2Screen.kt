@@ -12,8 +12,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.NonRestartableComposable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -27,12 +32,21 @@ import kr.co.psk.mvi_compose.common.LoadingIndicator
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 
+
+
+
 @Composable
 internal fun ExampleRetrofit2Screen(viewModel: ExampleRetrofit2ViewModel) {
     val context = LocalContext.current
     val state by viewModel.collectAsState()
-
-    Log.e("Test Recomposition","Parent")
+    val recompositionTestList by viewModel.recompositionTestList.collectAsState()
+    val onClickRecomposition by remember {
+        mutableStateOf(
+            {
+            viewModel.testRecomposition()
+            }
+        )
+    }
     viewModel.collectSideEffect{ sideEffect ->
         when (sideEffect) {
             is ExampleRetrofit2SideEffect.ErrorToast -> {
@@ -47,7 +61,7 @@ internal fun ExampleRetrofit2Screen(viewModel: ExampleRetrofit2ViewModel) {
         ButtonSection(
             onClickGetData = viewModel::getExampleData,
             onClickSideEffect =  viewModel::testSideEffect,
-            onClickTestRecomposition = viewModel::testRecomposition
+            onClickTestRecomposition = onClickRecomposition
         )
 
         when (state.status) {
@@ -55,10 +69,9 @@ internal fun ExampleRetrofit2Screen(viewModel: ExampleRetrofit2ViewModel) {
                 LoadingIndicator()
             }
             UiStatus.IDLE -> {
-//                ExampleRetrofit2ListBodyMVI(state.list)
-                ExampleRetrofit2ListBody(
-                    viewModel = viewModel
-                )
+                //ExampleRetrofit2ListBodyMVI(state.list)
+                //ExampleRetrofit2ListBody(viewModel = viewModel)
+                ExampleRetrofit2ListBodyList(recompositionTestList)
             }
 
             is UiStatus.Failed -> {
@@ -68,10 +81,11 @@ internal fun ExampleRetrofit2Screen(viewModel: ExampleRetrofit2ViewModel) {
 }
 
 @Composable
+@NonRestartableComposable
 private fun ButtonSection(
-    onClickGetData : () -> Unit,
-    onClickSideEffect : () -> Unit,
-    onClickTestRecomposition : () -> Unit
+    onClickGetData: () -> Unit,
+    onClickSideEffect: () -> Unit,
+    onClickTestRecomposition: () -> Unit
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(0.6f),
@@ -131,6 +145,23 @@ private fun ExampleRetrofit2ListBodyMVI(
     }
 }
 
+@Composable
+private fun ExampleRetrofit2ListBodyList(
+    recompositionTestList : ImmutableList<Retrofit2TestUiModel>
+) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        items(
+            items = recompositionTestList,
+            key = {item ->
+                item.index
+            }
+        ) {item ->
+            ExampleRetrofit2ListItem(item)
+        }
+    }
+}
 
 @Composable
 private fun ExampleRetrofit2ListItem(item : Retrofit2TestUiModel) {
